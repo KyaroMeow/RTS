@@ -7,8 +7,15 @@ public class SettingsManager : MonoBehaviour
     public Toggle fullscreenToggle;
     public Dropdown resolutionDropdown;
     public Slider volumeSlider;
+    public Button saveButton;
 
-    private Resolution[] resolutions;
+    private Resolution[] customResolutions = new Resolution[]
+    {
+        new Resolution { width = 1280, height = 720 },
+        new Resolution { width = 1366, height = 768 },
+        new Resolution { width = 1600, height = 900 },
+        new Resolution { width = 1920, height = 1080 }
+    };
 
     private const string FullscreenKey = "Fullscreen";
     private const string ResolutionKey = "Resolution";
@@ -24,19 +31,18 @@ public class SettingsManager : MonoBehaviour
         fullscreenToggle.onValueChanged.AddListener(delegate { OnFullscreenToggle(); });
 
         // Инициализация выпадающего списка разрешений
-        resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
 
         List<string> options = new List<string>();
         int currentResolutionIndex = 0;
 
-        for (int i = 0; i < resolutions.Length; i++)
+        for (int i = 0; i < customResolutions.Length; i++)
         {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
+            string option = customResolutions[i].width + " x " + customResolutions[i].height;
             options.Add(option);
 
-            if (resolutions[i].width == Screen.currentResolution.width &&
-                resolutions[i].height == Screen.currentResolution.height)
+            if (customResolutions[i].width == Screen.currentResolution.width &&
+                customResolutions[i].height == Screen.currentResolution.height)
             {
                 currentResolutionIndex = i;
             }
@@ -50,28 +56,34 @@ public class SettingsManager : MonoBehaviour
         // Инициализация слайдера громкости
         volumeSlider.value = AudioListener.volume;
         volumeSlider.onValueChanged.AddListener(delegate { OnVolumeChange(); });
+
+        // Инициализация кнопки сохранения
+        saveButton.onClick.AddListener(delegate { SaveSettings(); });
     }
 
     void OnFullscreenToggle()
     {
         Screen.fullScreen = fullscreenToggle.isOn;
-        PlayerPrefs.SetInt(FullscreenKey, fullscreenToggle.isOn ? 1 : 0);
-        PlayerPrefs.Save();
     }
 
     void OnResolutionChange()
     {
-        Resolution resolution = resolutions[resolutionDropdown.value];
+        Resolution resolution = customResolutions[resolutionDropdown.value];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-        PlayerPrefs.SetInt(ResolutionKey, resolutionDropdown.value);
-        PlayerPrefs.Save();
     }
 
     void OnVolumeChange()
     {
         AudioListener.volume = volumeSlider.value;
+    }
+
+    void SaveSettings()
+    {
+        PlayerPrefs.SetInt(FullscreenKey, fullscreenToggle.isOn ? 1 : 0);
+        PlayerPrefs.SetInt(ResolutionKey, resolutionDropdown.value);
         PlayerPrefs.SetFloat(VolumeKey, volumeSlider.value);
         PlayerPrefs.Save();
+        Debug.Log("Settings saved!");
     }
 
     void LoadSettings()
@@ -84,9 +96,9 @@ public class SettingsManager : MonoBehaviour
         if (PlayerPrefs.HasKey(ResolutionKey))
         {
             int resolutionIndex = PlayerPrefs.GetInt(ResolutionKey);
-            if (resolutionIndex >= 0 && resolutionIndex < resolutions.Length)
+            if (resolutionIndex >= 0 && resolutionIndex < customResolutions.Length)
             {
-                Resolution resolution = resolutions[resolutionIndex];
+                Resolution resolution = customResolutions[resolutionIndex];
                 Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
             }
         }
