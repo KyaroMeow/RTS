@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class UnitScript : MonoBehaviour
+{
+    public Sprite unitIcon;
+    public int maxHP;
+    private int currentHP;
+
+    void Start()
+    {
+        currentHP = maxHP;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHP -= damage;
+        if (currentHP <= 0)
+        {
+            currentHP = 0;
+            // Уничтожение юнита или другие действия при смерти
+        }
+    }
+}
