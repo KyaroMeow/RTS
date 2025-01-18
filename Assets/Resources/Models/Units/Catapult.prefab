@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4455319354212285235}
   - component: {fileID: 6261120289453086121}
   - component: {fileID: 2343223415764957998}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: body 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 3764304898517307800}
   - component: {fileID: 8982247795209686812}
   - component: {fileID: 236971718787480707}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: flag 22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 7499887335969100977}
   - component: {fileID: 8703761787678405463}
   - component: {fileID: 3577675782808129428}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wheelBackLeft 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 5824727825874220908}
   - component: {fileID: 6575903550521210548}
   - component: {fileID: 8703528024825356644}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AttackObjectModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2521441249524812300}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 7067978604516258696}
   - component: {fileID: 6215304316755083171}
   - component: {fileID: 520353171982742473}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wheelBackRight 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 5471146009545137907}
   - component: {fileID: 6992277043634979802}
   - component: {fileID: 5635994947879200478}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DustTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5243,7 +5243,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5724635999710050686}
-  m_Layer: 0
+  - component: {fileID: -1797888149362821314}
+  m_Layer: 3
   m_Name: Catapult
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5273,6 +5274,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &-1797888149362821314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5381656724978838495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a1b6ba4891fea4694715a5030f5d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitIcon: {fileID: 21300000, guid: 2e0c6035e4870b84d804a645cb3fe48f, type: 3}
+  maxHP: 35
 --- !u!1 &6071087288195153061
 GameObject:
   m_ObjectHideFlags: 0
@@ -5284,7 +5299,7 @@ GameObject:
   - component: {fileID: 8336341985291251241}
   - component: {fileID: 4006430089400033620}
   - component: {fileID: 5522321642083661627}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: flag 23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5368,7 +5383,7 @@ GameObject:
   - component: {fileID: 8013746827253935844}
   - component: {fileID: 7307620635523103651}
   - component: {fileID: 4357020982760412541}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wheelFrontRight 11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5452,7 +5467,7 @@ GameObject:
   - component: {fileID: 1201945056421888334}
   - component: {fileID: 8154122377647816591}
   - component: {fileID: 4434802111170535406}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: catapult 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5536,7 +5551,7 @@ GameObject:
   - component: {fileID: 4990076125492528048}
   - component: {fileID: 4731022661693351767}
   - component: {fileID: 8296995004977405262}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wheelFrontLeft 11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5702,7 +5717,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8319197265822710239}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: attack_object_source
   m_TagString: Untagged
   m_Icon: {fileID: 0}

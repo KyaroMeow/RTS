@@ -12,14 +12,16 @@ public class UnitScript : MonoBehaviour
     {
         currentHP = maxHP;
     }
-
+    public int GetCurrentHP()
+    {
+        return currentHP;
+    }
     public void TakeDamage(int damage)
     {
         currentHP -= damage;
         if (currentHP <= 0)
         {
             currentHP = 0;
-            // Уничтожение юнита или другие действия при смерти
         }
     }
 }

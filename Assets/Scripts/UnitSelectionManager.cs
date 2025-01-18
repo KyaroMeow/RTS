@@ -42,10 +42,13 @@ public class UnitSelectionManager : MonoBehaviour
         Vector2 min = selectionBox.anchoredPosition - (selectionBox.sizeDelta / 2);
         Vector2 max = selectionBox.anchoredPosition + (selectionBox.sizeDelta / 2);
 
-        Collider2D[] colliders = Physics2D.OverlapAreaAll(min, max, unitLayer);
+        Collider[] colliders = Physics.OverlapBox(Camera.main.ScreenToWorldPoint(new Vector3(min.x, min.y, Camera.main.nearClipPlane)),
+                                                  new Vector3(Mathf.Abs(max.x - min.x), Mathf.Abs(max.y - min.y), 0),
+                                                  Quaternion.identity,
+                                                  unitLayer);
 
         selectedUnits.Clear();
-        foreach (Collider2D collider in colliders)
+        foreach (Collider collider in colliders)
         {
             GameObject unit = collider.gameObject;
             if (unit.CompareTag("Unit"))
@@ -59,11 +62,15 @@ public class UnitSelectionManager : MonoBehaviour
 
     void UpdateHUD()
     {
-        // Обновление HUD в зависимости от выделенных юнитов
+        HUDManager.Instance.ClearHUD();
+
         foreach (GameObject unit in selectedUnits)
         {
-            // Пример: отображение иконок на HUD
-            // HUDManager.Instance.ShowUnitIcon(unit);
+            UnitScript unitComponent = unit.GetComponent<UnitScript>();
+            if (unitComponent != null)
+            {
+                HUDManager.Instance.ShowUnitHUD(unitComponent);
+            }
         }
     }
 }

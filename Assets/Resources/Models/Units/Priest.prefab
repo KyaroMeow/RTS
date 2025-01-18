@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2327018945740870879}
   - component: {fileID: 6034499572430068922}
   - component: {fileID: 2403960484961078414}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,8 @@ GameObject:
   - component: {fileID: 1734693315051835776}
   - component: {fileID: 4358199234350678336}
   - component: {fileID: 2481741738556305708}
-  m_Layer: 0
+  - component: {fileID: -6384887096221276478}
+  m_Layer: 3
   m_Name: Priest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,6 +255,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-6384887096221276478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7255528331568808303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a1b6ba4891fea4694715a5030f5d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitIcon: {fileID: 21300000, guid: 3bf9bc81e50045241944ad84906fbf8e, type: 3}
+  maxHP: 15
 --- !u!1 &7402573992459290231
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +280,7 @@ GameObject:
   - component: {fileID: 5972606885872627834}
   - component: {fileID: 8318839132394670527}
   - component: {fileID: 2904878566693765823}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +363,7 @@ GameObject:
   - component: {fileID: 344089153946986979}
   - component: {fileID: 5050405129661363724}
   - component: {fileID: 8207881200588736860}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
