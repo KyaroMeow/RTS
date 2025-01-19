@@ -7,26 +7,31 @@ public class UnitSelectionManager : MonoBehaviour
     public RectTransform selectionBox;
     public List<GameObject> selectedUnits = new List<GameObject>();
 
-    private Vector2 startPos;
+    private Vector2 startMousePos;
+    private Vector2 endMousePos;
     private bool isSelecting = false;
+
+    void Start()
+    {
+        // Убедитесь, что selectionBox отключен при старте
+        selectionBox.gameObject.SetActive(false);
+    }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            startPos = Input.mousePosition;
+            startMousePos = Input.mousePosition;
             isSelecting = true;
             selectionBox.gameObject.SetActive(true);
-            selectionBox.anchoredPosition = startPos;
-            selectionBox.sizeDelta = Vector2.zero;
+            selectionBox.sizeDelta = Vector2.zero; // Сброс размера
+            selectionBox.anchoredPosition = startMousePos; // Установите начальную позицию
         }
 
         if (Input.GetMouseButton(0) && isSelecting)
         {
-            Vector2 currentPos = Input.mousePosition;
-            Vector2 boxSize = currentPos - startPos;
-            selectionBox.sizeDelta = new Vector2(Mathf.Abs(boxSize.x), Mathf.Abs(boxSize.y));
-            selectionBox.anchoredPosition = startPos + boxSize / 2;
+            endMousePos = Input.mousePosition;
+            UpdateSelectionBox();
         }
 
         if (Input.GetMouseButtonUp(0) && isSelecting)
@@ -37,15 +42,25 @@ public class UnitSelectionManager : MonoBehaviour
         }
     }
 
+    void UpdateSelectionBox()
+    {
+        float width = endMousePos.x - startMousePos.x;
+        float height = endMousePos.y - startMousePos.y;
+        selectionBox.sizeDelta = new Vector2(Mathf.Abs(width), Mathf.Abs(height));
+
+        // Установите позицию selectionBox в центр между startMousePos и endMousePos
+        selectionBox.anchoredPosition = startMousePos + new Vector2(width / 2, height / 2);
+    }
+
     void SelectUnits()
     {
         Vector2 min = selectionBox.anchoredPosition - (selectionBox.sizeDelta / 2);
         Vector2 max = selectionBox.anchoredPosition + (selectionBox.sizeDelta / 2);
 
-        Collider[] colliders = Physics.OverlapBox(Camera.main.ScreenToWorldPoint(new Vector3(min.x, min.y, Camera.main.nearClipPlane)),
-                                                  new Vector3(Mathf.Abs(max.x - min.x), Mathf.Abs(max.y - min.y), 0),
-                                                  Quaternion.identity,
-                                                  unitLayer);
+        Vector3 minWorld = Camera.main.ScreenToWorldPoint(new Vector3(min.x, min.y, Camera.main.nearClipPlane));
+        Vector3 maxWorld = Camera.main.ScreenToWorldPoint(new Vector3(max.x, max.y, Camera.main.nearClipPlane));
+
+        Collider[] colliders = Physics.OverlapBox(minWorld + (maxWorld - minWorld) / 2, (maxWorld - minWorld) / 2, Quaternion.identity, unitLayer);
 
         selectedUnits.Clear();
         foreach (Collider collider in colliders)
