@@ -10164,7 +10164,7 @@ GameObject:
   - component: {fileID: 1518533034}
   - component: {fileID: 1518533036}
   - component: {fileID: 1518533035}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: SelectionBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
