@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UnitScript : MonoBehaviour
 {
-    public string Name;
+    public string Name; 
     public Sprite unitIcon;
     public int maxHP;
     private int currentHP;
