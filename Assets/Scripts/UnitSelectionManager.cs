@@ -115,7 +115,7 @@ public class UnitSelectionManager : MonoBehaviour
 
     void UpdateHUD()
     {
-       // HUDManager.Instance.ClearHUD();
+       HUDManager.Instance.ClearHUD();
 
         foreach (GameObject unit in selectedUnits)
         {
