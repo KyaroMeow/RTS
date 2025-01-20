@@ -60,7 +60,7 @@ public class UnitSelectionManager : MonoBehaviour
         Vector3 minWorld = Camera.main.ScreenToWorldPoint(new Vector3(min.x, min.y, Camera.main.nearClipPlane));
         Vector3 maxWorld = Camera.main.ScreenToWorldPoint(new Vector3(max.x, max.y, Camera.main.nearClipPlane));
 
-        Collider[] colliders = Physics.OverlapBox(minWorld + (maxWorld - minWorld) / 2, (maxWorld - minWorld) / 2, Quaternion.identity, unitLayer);
+        Collider[] colliders = Physics.OverlapBox((minWorld + maxWorld) / 2, (maxWorld - minWorld) / 2, Quaternion.identity, unitLayer);
 
         selectedUnits.Clear();
         foreach (Collider collider in colliders)
