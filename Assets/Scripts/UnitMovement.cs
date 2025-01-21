@@ -5,13 +5,13 @@ using System.Collections.Generic;
 
 public class UnitMovement : MonoBehaviour
 {
-    public RectTransform selectionBoxUI; // RectTransform для визуализации selection box
+    public RectTransform selectionBoxUI; // RectTransform пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ selection box
     public Camera mainCamera;
 
-    private List<GameObject> selectedUnits = new List<GameObject>(); // Список выделенных юнитов
-    private Vector2 startMousePos; // Начальная позиция мыши
-    private Vector2 endMousePos; // Конечная позиция мыши
-    private bool isSelecting = false; // Флаг для отслеживания состояния выделения
+    private List<GameObject> selectedUnits = new List<GameObject>(); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+    private Vector2 startMousePos; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+    private Vector2 endMousePos; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+    private bool isSelecting = false; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
     void Update()
     {
@@ -23,11 +23,12 @@ public class UnitMovement : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+
             startMousePos = Input.mousePosition;
             isSelecting = true;
             selectionBoxUI.gameObject.SetActive(true);
-            selectionBoxUI.sizeDelta = Vector2.zero; // Сброс размера
-            selectionBoxUI.anchoredPosition = startMousePos; // Установите начальную позицию
+            selectionBoxUI.sizeDelta = Vector2.zero; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            selectionBoxUI.anchoredPosition = startMousePos; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         }
 
         if (Input.GetMouseButton(0) && isSelecting)
@@ -41,6 +42,10 @@ public class UnitMovement : MonoBehaviour
             isSelecting = false;
             selectionBoxUI.gameObject.SetActive(false);
             SelectUnitsInBox();
+            if (selectedUnits.Count > 1)
+            {
+            HUDManager.Instance.ShowUnitHUD(selectedUnits);
+            }
         }
     }
 
@@ -50,7 +55,7 @@ public class UnitMovement : MonoBehaviour
         float height = endMousePos.y - startMousePos.y;
         selectionBoxUI.sizeDelta = new Vector2(Mathf.Abs(width), Mathf.Abs(height));
 
-        // Установите позицию selectionBox в центр между startMousePos и endMousePos
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ selectionBox пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ startMousePos пїЅ endMousePos
         selectionBoxUI.anchoredPosition = startMousePos + new Vector2(width / 2, height / 2);
     }
 
@@ -105,6 +110,7 @@ public class UnitMovement : MonoBehaviour
 
     void DeselectAllUnits()
     {
+        HUDManager.Instance.ClearHUD();
         foreach (GameObject unit in selectedUnits)
         {
             Transform selectionSprite = unit.transform.Find("SelectionSprite");

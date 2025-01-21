@@ -601,7 +601,7 @@ GameObject:
   - component: {fileID: 6552855864722058664}
   - component: {fileID: 3534760978168010126}
   - component: {fileID: 5019476042990118687}
-  - component: {fileID: 2597130886438250252}
+  - component: {fileID: -1286467425825844875}
   m_Layer: 3
   m_Name: UnitKnight
   m_TagString: Unit
@@ -654,7 +654,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.6076171, y: 5.215948, z: 2.6076171}
   m_Center: {x: -0, y: 2.6041665, z: -0}
---- !u!195 &2597130886438250252
+--- !u!195 &-1286467425825844875
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -663,7 +663,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8308945409842435620}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1.8
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -673,6 +673,6 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: -0.55
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

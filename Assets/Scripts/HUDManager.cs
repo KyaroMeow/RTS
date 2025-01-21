@@ -21,17 +21,25 @@ public class HUDManager : MonoBehaviour
         }
     }
 
-    public void ShowUnitHUD(UnitScript unit)
+    public void ShowUnitHUD(List<GameObject> selectedUnits)
     {
-        Image unitIcon = unithudElementPrefab.GetComponentInChildren<Image>();
-        Slider healthBar = unitIcon?.GetComponentInChildren<Slider>();
+        foreach (GameObject unit in selectedUnits)
+        {
+            // Создаем экземпляр префаба
+            GameObject hudElement = Instantiate(unithudElementPrefab, hudParent);
+            Image unitIcon = hudElement.GetComponentInChildren<Image>();
+            Slider healthBar = hudElement.GetComponentInChildren<Slider>();
 
-        unitIcon.sprite = unit.unitIcon;
-        healthBar.maxValue = unit.maxHP;
-        healthBar.value = unit.GetCurrentHP();
-        GameObject hudElement = Instantiate(unithudElementPrefab, hudParent);
+            UnitScript unitScript = unit.GetComponent<UnitScript>();
+            if (unitScript != null)
+            {
+                unitIcon.sprite = unitScript.unitIcon;
+                healthBar.maxValue = unitScript.maxHP;
+                healthBar.value = unitScript.GetCurrentHP();
+            }
 
-        hudElements.Add(hudElement);
+            hudElements.Add(hudElement);
+        }
     }
     public void ClearHUD()
     {
