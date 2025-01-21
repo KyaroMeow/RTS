@@ -2867,6 +2867,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3928290521851066025}
+  - component: {fileID: 7877639974193093156}
   m_Layer: 10
   m_Name: town_center_model
   m_TagString: Untagged
@@ -2953,6 +2954,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!65 &7877639974193093156
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3931184038110116919}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 51.86955, y: 19.908628, z: 29.935076}
+  m_Center: {x: 6.839906, y: 1.4265501, z: 2.5462055}
 --- !u!1 &4046317012067538984
 GameObject:
   m_ObjectHideFlags: 0

@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 2481741738556305708}
   - component: {fileID: -6384887096221276478}
   - component: {fileID: 3286548661691362060}
-  - component: {fileID: -1800519464346018852}
+  - component: {fileID: 1377331568900930592}
   m_Layer: 3
   m_Name: Priest
   m_TagString: Unit
@@ -195,7 +195,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7255528331568808303}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
@@ -206,7 +206,7 @@ Transform:
   - {fileID: 7530364024093992952}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4358199234350678336
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -285,22 +285,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.607617, y: 5.1826944, z: 2.607617}
   m_Center: {x: -0, y: 2.5875385, z: -0}
---- !u!54 &-1800519464346018852
-Rigidbody:
+--- !u!195 &1377331568900930592
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7255528331568808303}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1.3038085
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 5.207617
+  m_BaseOffset: 2.6038084
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &7402573992459290231
 GameObject:
   m_ObjectHideFlags: 0
