@@ -9,7 +9,9 @@ public class HUDManager : MonoBehaviour
     public Transform hudParent;
     public GameObject OneUnitSelectedPanel;
     public GameObject unithudElementPrefab;
-    public GameObject actionPanel;
+    public GameObject actionPanelWorker;
+    public GameObject actionPanelWarrior;
+    public GameObject actionPanelHealer;
     public List<GameObject> hudElements = new List<GameObject>();
 
     void Awake()
@@ -45,7 +47,7 @@ public class HUDManager : MonoBehaviour
                 }
                 hudElements.Add(hudElement);
             }
-            
+
 
         }
         else if (selectedUnits.Count == 1)
@@ -62,6 +64,18 @@ public class HUDManager : MonoBehaviour
                 unitName.text = unitScript.Name;
                 unitSlider.maxValue = unitScript.maxHP;
                 unitSlider.value = unitScript.GetCurrentHP();
+                switch (unitScript.Name)
+                {
+                    case "Villager":
+                        actionPanelWorker.SetActive(true);
+                        break;
+                    case "Priest":
+                        actionPanelHealer.SetActive(true);
+                        break;
+                    default:
+                        actionPanelWarrior.SetActive(true);
+                        break;
+                }
             }
         }
     }
@@ -73,6 +87,9 @@ public class HUDManager : MonoBehaviour
             Destroy(hudElement);
         }
         hudElements.Clear();
+        actionPanelHealer.SetActive(false);
+        actionPanelWarrior.SetActive(false);
+        actionPanelWorker.SetActive(false);
         OneUnitSelectedPanel.SetActive(false);
     }
 }

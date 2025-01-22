@@ -5,13 +5,14 @@ using System.Collections.Generic;
 
 public class UnitMovement : MonoBehaviour
 {
-    public RectTransform selectionBoxUI; // RectTransform ��� ������������ selection box
+    public RectTransform selectionBoxUI; // RectTransform для selection box
     public Camera mainCamera;
+    public List<RectTransform> noSelectionAreas; // Области, где нельзя выделять юнитов
 
-    public List<GameObject> selectedUnits = new List<GameObject>(); // ������ ���������� ������
-    private Vector2 startMousePos; // ��������� ������� ����
-    private Vector2 endMousePos; // �������� ������� ����
-    private bool isSelecting = false; // ���� ��� ������������ ��������� ���������
+    public List<GameObject> selectedUnits = new List<GameObject>(); // Список выбранных юнитов
+    private Vector2 startMousePos; // Начальная позиция мыши
+    private Vector2 endMousePos; // Конечная позиция мыши
+    private bool isSelecting = false; // Флаг, указывающий, что происходит выбор
 
     void Update()
     {
@@ -21,20 +22,20 @@ public class UnitMovement : MonoBehaviour
 
     void HandleSelection()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !IsPointerOverNoSelectionArea())
         {
-
             startMousePos = Input.mousePosition;
             isSelecting = true;
-            selectionBoxUI.gameObject.SetActive(true);
-            selectionBoxUI.sizeDelta = Vector2.zero; // ����� �������
-            selectionBoxUI.anchoredPosition = startMousePos; // ���������� ��������� �������
         }
 
         if (Input.GetMouseButton(0) && isSelecting)
         {
             endMousePos = Input.mousePosition;
-            UpdateSelectionBox();
+            if (startMousePos != endMousePos)
+            {
+                selectionBoxUI.gameObject.SetActive(true);
+                UpdateSelectionBox();
+            }
         }
 
         if (Input.GetMouseButtonUp(0) && isSelecting)
@@ -44,7 +45,7 @@ public class UnitMovement : MonoBehaviour
             SelectUnitsInBox();
             if (selectedUnits.Count > 0)
             {
-            HUDManager.Instance.ShowUnitHUD(selectedUnits);
+                HUDManager.Instance.ShowUnitHUD(selectedUnits);
             }
         }
     }
@@ -55,7 +56,7 @@ public class UnitMovement : MonoBehaviour
         float height = endMousePos.y - startMousePos.y;
         selectionBoxUI.sizeDelta = new Vector2(Mathf.Abs(width), Mathf.Abs(height));
 
-        // ���������� ������� selectionBox � ����� ����� startMousePos � endMousePos
+        // Центрирование selectionBox между startMousePos и endMousePos
         selectionBoxUI.anchoredPosition = startMousePos + new Vector2(width / 2, height / 2);
     }
 
@@ -120,5 +121,18 @@ public class UnitMovement : MonoBehaviour
             }
         }
         selectedUnits.Clear();
+    }
+
+    bool IsPointerOverNoSelectionArea()
+    {
+        Vector2 mousePos = Input.mousePosition;
+        foreach (RectTransform area in noSelectionAreas)
+        {
+            if (RectTransformUtility.RectangleContainsScreenPoint(area, mousePos))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
