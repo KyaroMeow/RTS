@@ -687,7 +687,7 @@ GameObject:
   - component: {fileID: 7923597872040460502}
   m_Layer: 3
   m_Name: Heavy Warrior
-  m_TagString: Unit
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

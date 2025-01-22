@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4869421227840945477}
   m_Layer: 3
   m_Name: Priest
-  m_TagString: Unit
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

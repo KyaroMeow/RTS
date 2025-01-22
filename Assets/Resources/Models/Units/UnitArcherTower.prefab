@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 4321753934516366994}
   m_Layer: 3
   m_Name: Archer Tower
-  m_TagString: Unit
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

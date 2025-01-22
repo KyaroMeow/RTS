@@ -8,7 +8,7 @@ public class UnitMovement : MonoBehaviour
     public RectTransform selectionBoxUI; // RectTransform ��� ������������ selection box
     public Camera mainCamera;
 
-    private List<GameObject> selectedUnits = new List<GameObject>(); // ������ ���������� ������
+    public List<GameObject> selectedUnits = new List<GameObject>(); // ������ ���������� ������
     private Vector2 startMousePos; // ��������� ������� ����
     private Vector2 endMousePos; // �������� ������� ����
     private bool isSelecting = false; // ���� ��� ������������ ��������� ���������

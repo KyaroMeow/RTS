@@ -7,7 +7,7 @@ public class HUDManager : MonoBehaviour
     public static HUDManager Instance;
     public Transform hudParent;
     public GameObject unithudElementPrefab;
-    private List<GameObject> hudElements = new List<GameObject>();
+    public List<GameObject> hudElements = new List<GameObject>();
 
     void Awake()
     {
