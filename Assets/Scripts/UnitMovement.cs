@@ -42,7 +42,7 @@ public class UnitMovement : MonoBehaviour
             isSelecting = false;
             selectionBoxUI.gameObject.SetActive(false);
             SelectUnitsInBox();
-            if (selectedUnits.Count > 1)
+            if (selectedUnits.Count > 0)
             {
             HUDManager.Instance.ShowUnitHUD(selectedUnits);
             }
