@@ -1,23 +1,21 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.AI;
 using System.Collections.Generic;
 
-public class UnitMovement : MonoBehaviour
+public class UnitSelector : MonoBehaviour
 {
-    public RectTransform selectionBoxUI; // RectTransform РґР»СЏ selection box
+    public RectTransform selectionBoxUI; // RectTransform для selection box
     public Camera mainCamera;
-    public List<RectTransform> noSelectionAreas; // РћР±Р»Р°СЃС‚Рё, РіРґРµ РЅРµР»СЊР·СЏ РІС‹РґРµР»СЏС‚СЊ СЋРЅРёС‚РѕРІ
+    public List<RectTransform> noSelectionAreas; // Области, где нельзя выделять юнитов
 
-    public List<GameObject> selectedUnits = new List<GameObject>(); // РЎРїРёСЃРѕРє РІС‹Р±СЂР°РЅРЅС‹С… СЋРЅРёС‚РѕРІ
-    private Vector2 startMousePos; // РќР°С‡Р°Р»СЊРЅР°СЏ РїРѕР·РёС†РёСЏ РјС‹С€Рё
-    private Vector2 endMousePos; // РљРѕРЅРµС‡РЅР°СЏ РїРѕР·РёС†РёСЏ РјС‹С€Рё
-    private bool isSelecting = false; // Р¤Р»Р°Рі, СѓРєР°Р·С‹РІР°СЋС‰РёР№, С‡С‚Рѕ РїСЂРѕРёСЃС…РѕРґРёС‚ РІС‹Р±РѕСЂ
+    public static List<GameObject> SelectedUnits { get; private set; } = new List<GameObject>(); // Список выбранных юнитов
+    private Vector2 startMousePos; // Начальная позиция мыши
+    private Vector2 endMousePos; // Конечная позиция мыши
+    private bool isSelecting = false; // Флаг, указывающий, что происходит выбор
 
     void Update()
     {
         HandleSelection();
-        HandleMovement();
     }
 
     void HandleSelection()
@@ -26,6 +24,22 @@ public class UnitMovement : MonoBehaviour
         {
             startMousePos = Input.mousePosition;
             isSelecting = true;
+
+            // Проверка на выбор одного юнита
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                GameObject hitObject = hit.collider.gameObject;
+                if (hitObject.CompareTag("Unit"))
+                {
+                    DeselectAllUnits();
+                    SelectUnit(hitObject);
+                    HUDManager.Instance.ShowUnitHUD(SelectedUnits);
+                    return;
+                }
+            }
         }
 
         if (Input.GetMouseButton(0) && isSelecting)
@@ -43,9 +57,9 @@ public class UnitMovement : MonoBehaviour
             isSelecting = false;
             selectionBoxUI.gameObject.SetActive(false);
             SelectUnitsInBox();
-            if (selectedUnits.Count > 0)
+            if (SelectedUnits.Count > 0)
             {
-                HUDManager.Instance.ShowUnitHUD(selectedUnits);
+                HUDManager.Instance.ShowUnitHUD(SelectedUnits);
             }
         }
     }
@@ -56,7 +70,7 @@ public class UnitMovement : MonoBehaviour
         float height = endMousePos.y - startMousePos.y;
         selectionBoxUI.sizeDelta = new Vector2(Mathf.Abs(width), Mathf.Abs(height));
 
-        // Р¦РµРЅС‚СЂРёСЂРѕРІР°РЅРёРµ selectionBox РјРµР¶РґСѓ startMousePos Рё endMousePos
+        // Центрирование selectionBox между startMousePos и endMousePos
         selectionBoxUI.anchoredPosition = startMousePos + new Vector2(width / 2, height / 2);
     }
 
@@ -79,29 +93,9 @@ public class UnitMovement : MonoBehaviour
         }
     }
 
-    void HandleMovement()
-    {
-        if (selectedUnits.Count > 0 && Input.GetMouseButtonDown(1))
-        {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                foreach (GameObject unit in selectedUnits)
-                {
-                    NavMeshAgent agent = unit.GetComponent<NavMeshAgent>();
-                    if (agent != null)
-                    {
-                        agent.SetDestination(hit.point);
-                    }
-                }
-            }
-        }
-    }
-
     void SelectUnit(GameObject unit)
     {
-        selectedUnits.Add(unit);
+        SelectedUnits.Add(unit);
         Transform selectionSprite = unit.transform.Find("SelectionSprite");
         if (selectionSprite != null)
         {
@@ -112,7 +106,7 @@ public class UnitMovement : MonoBehaviour
     void DeselectAllUnits()
     {
         HUDManager.Instance.ClearHUD();
-        foreach (GameObject unit in selectedUnits)
+        foreach (GameObject unit in SelectedUnits)
         {
             Transform selectionSprite = unit.transform.Find("SelectionSprite");
             if (selectionSprite != null)
@@ -120,7 +114,7 @@ public class UnitMovement : MonoBehaviour
                 selectionSprite.gameObject.SetActive(false);
             }
         }
-        selectedUnits.Clear();
+        SelectedUnits.Clear();
     }
 
     bool IsPointerOverNoSelectionArea()
