@@ -131,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8853640851821350094}
   - component: {fileID: 1651489371707760457}
+  - component: {fileID: -8068710244465550865}
   m_Layer: 0
   m_Name: farm_model
   m_TagString: Buildings
@@ -168,6 +169,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.269063, y: 1.3350837, z: 3.0694485}
   m_Center: {x: -0.0011789799, y: 0.59190047, z: 0.13788724}
+--- !u!114 &-8068710244465550865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705587607915861198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 445ec1842be008a429a482a25c52efcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  MaxHP: 0
+  BuildingsIcon: {fileID: 0}
 --- !u!1 &2065426160451974739
 GameObject:
   m_ObjectHideFlags: 0

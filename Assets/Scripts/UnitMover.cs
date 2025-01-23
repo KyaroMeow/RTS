@@ -15,16 +15,19 @@ public class UnitMover : MonoBehaviour
     {
         if (UnitSelector.SelectedUnits.Count > 0 && Input.GetMouseButtonDown(1))
         {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (UnitSelector.SelectedUnits[0].CompareTag("Unit"))
             {
-                foreach (GameObject unit in UnitSelector.SelectedUnits)
+                Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+                if (Physics.Raycast(ray, out RaycastHit hit))
                 {
-                    NavMeshAgent agent = unit.GetComponent<NavMeshAgent>();
-                    if (agent != null)
+                    foreach (GameObject unit in UnitSelector.SelectedUnits)
                     {
-                        agent.SetDestination(hit.point);
+                        NavMeshAgent agent = unit.GetComponent<NavMeshAgent>();
+                        if (agent != null)
+                        {
+                            agent.SetDestination(hit.point);
+                        }
                     }
                 }
             }

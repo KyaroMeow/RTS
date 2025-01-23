@@ -2953,6 +2953,7 @@ GameObject:
   - component: {fileID: 3928290521851066025}
   - component: {fileID: 7877639974193093156}
   - component: {fileID: 8290981301408003740}
+  - component: {fileID: 6027340260734385094}
   m_Layer: 10
   m_Name: town_center_model
   m_TagString: Buildings
@@ -3069,6 +3070,21 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 5.5, y: 0, z: 0.61}
   m_TimeToStationary: 0.5
+--- !u!114 &6027340260734385094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3931184038110116919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 445ec1842be008a429a482a25c52efcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  MaxHP: 0
+  BuildingsIcon: {fileID: 0}
 --- !u!1 &4046317012067538984
 GameObject:
   m_ObjectHideFlags: 0

@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 678430460160886476}
   - component: {fileID: 3004880818362474632}
   - component: {fileID: 3851277780768942916}
+  - component: {fileID: 6758804093032382221}
   m_Layer: 0
   m_Name: siege_factory_model
   m_TagString: Buildings
@@ -432,6 +433,21 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.12, y: 5.8, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &6758804093032382221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131050632274006739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 445ec1842be008a429a482a25c52efcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  MaxHP: 0
+  BuildingsIcon: {fileID: 0}
 --- !u!1 &1222052201016574064
 GameObject:
   m_ObjectHideFlags: 0

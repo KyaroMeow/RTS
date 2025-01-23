@@ -1811,6 +1811,7 @@ GameObject:
   - component: {fileID: 3928290521851066025}
   - component: {fileID: 7429875400975079030}
   - component: {fileID: 8695319209936070548}
+  - component: {fileID: -3193130594490427440}
   m_Layer: 10
   m_Name: granary_model
   m_TagString: Buildings
@@ -1886,6 +1887,21 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.14, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &-3193130594490427440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3931184038110116919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 445ec1842be008a429a482a25c52efcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  MaxHP: 0
+  BuildingsIcon: {fileID: 0}
 --- !u!1 &4315044987307610154
 GameObject:
   m_ObjectHideFlags: 0

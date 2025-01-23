@@ -12,6 +12,8 @@ public class UnitSelector : MonoBehaviour
     private Vector2 startMousePos; // Начальная позиция мыши
     private Vector2 endMousePos; // Конечная позиция мыши
     private bool isSelecting = false; // Флаг, указывающий, что происходит выбор
+    private bool singleUnitSelected = false; // Флаг, указывающий, что был выбран один юнит
+    private bool mouseMoved = false; // Флаг, указывающий, что мышь двигалась
 
     void Update()
     {
@@ -24,6 +26,8 @@ public class UnitSelector : MonoBehaviour
         {
             startMousePos = Input.mousePosition;
             isSelecting = true;
+            singleUnitSelected = false;
+            mouseMoved = false;
 
             // Проверка на выбор одного юнита
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -32,27 +36,29 @@ public class UnitSelector : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 GameObject hitObject = hit.collider.gameObject;
-                if (hitObject.CompareTag("Unit"))
+                if (hitObject.CompareTag("Unit") || hitObject.CompareTag("Building"))
                 {
                     DeselectAllUnits();
                     SelectUnit(hitObject);
                     HUDManager.Instance.ShowUnitHUD(SelectedUnits);
+                    singleUnitSelected = true; // Устанавливаем флаг, что был выбран один юнит
                     return;
                 }
             }
         }
 
-        if (Input.GetMouseButton(0) && isSelecting)
+        if (Input.GetMouseButton(0) && isSelecting && !singleUnitSelected)
         {
             endMousePos = Input.mousePosition;
             if (startMousePos != endMousePos)
             {
+                mouseMoved = true;
                 selectionBoxUI.gameObject.SetActive(true);
                 UpdateSelectionBox();
             }
         }
 
-        if (Input.GetMouseButtonUp(0) && isSelecting)
+        if (Input.GetMouseButtonUp(0) && isSelecting && !singleUnitSelected && mouseMoved)
         {
             isSelecting = false;
             selectionBoxUI.gameObject.SetActive(false);
@@ -130,3 +136,4 @@ public class UnitSelector : MonoBehaviour
         return false;
     }
 }
+    

@@ -12,6 +12,7 @@ public class HUDManager : MonoBehaviour
     public GameObject actionPanelWorker;
     public GameObject actionPanelWarrior;
     public GameObject actionPanelHealer;
+    public GameObject resoursesPanel;
     public List<GameObject> hudElements = new List<GameObject>();
 
     void Awake()
