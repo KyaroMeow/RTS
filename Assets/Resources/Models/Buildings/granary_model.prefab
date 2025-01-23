@@ -1899,7 +1899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 445ec1842be008a429a482a25c52efcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Granary
   MaxHP: 0
   BuildingsIcon: {fileID: 0}
 --- !u!1 &4315044987307610154

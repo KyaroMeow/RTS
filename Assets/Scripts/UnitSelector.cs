@@ -36,7 +36,7 @@ public class UnitSelector : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 GameObject hitObject = hit.collider.gameObject;
-                if (hitObject.CompareTag("Unit") || hitObject.CompareTag("Building"))
+                if (hitObject.CompareTag("Unit") || hitObject.CompareTag("Buildings"))
                 {
                     DeselectAllUnits();
                     SelectUnit(hitObject);

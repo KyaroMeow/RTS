@@ -58,24 +58,39 @@ public class HUDManager : MonoBehaviour
             Text unitName = OneUnitSelectedPanel.GetComponentInChildren<Text>();
             Slider unitSlider = OneUnitSelectedPanel.GetComponentInChildren<Slider>();
             GameObject unit = selectedUnits[0];
-            UnitScript unitScript = unit.GetComponent<UnitScript>();
-            if (unitScript != null)
+            if (unit.CompareTag("Unit"))
             {
-                unitIcon.sprite = unitScript.unitIcon;
-                unitName.text = unitScript.Name;
-                unitSlider.maxValue = unitScript.maxHP;
-                unitSlider.value = unitScript.GetCurrentHP();
-                switch (unitScript.Name)
+                UnitScript unitScript = unit.GetComponent<UnitScript>();
+                if (unitScript != null)
                 {
-                    case "Villager":
-                        actionPanelWorker.SetActive(true);
-                        break;
-                    case "Priest":
-                        actionPanelHealer.SetActive(true);
-                        break;
-                    default:
-                        actionPanelWarrior.SetActive(true);
-                        break;
+                    unitIcon.sprite = unitScript.unitIcon;
+                    unitName.text = unitScript.Name;
+                    unitSlider.maxValue = unitScript.maxHP;
+                    unitSlider.value = unitScript.GetCurrentHP();
+                    switch (unitScript.Name)
+                    {
+                        case "Villager":
+                            actionPanelWorker.SetActive(true);
+                            break;
+                        case "Priest":
+                            actionPanelHealer.SetActive(true);
+                            break;
+                        default:
+                            actionPanelWarrior.SetActive(true);
+                            break;
+                    }
+                }
+
+            }
+            if (unit.CompareTag("Buildings"))
+            {
+                BuildingsScript buildingsScript = unit.GetComponent<BuildingsScript>();
+                if (buildingsScript != null)
+                {
+                    unitIcon.sprite = buildingsScript.BuildingsIcon;
+                    unitName.text = buildingsScript.Name;
+                    unitSlider.maxValue = buildingsScript.MaxHP;
+                    unitSlider.value = buildingsScript.CurrentHP;
                 }
             }
         }
