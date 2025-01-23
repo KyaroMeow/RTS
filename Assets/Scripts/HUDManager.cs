@@ -14,6 +14,11 @@ public class HUDManager : MonoBehaviour
     public GameObject actionPanelHealer;
     public GameObject resoursesPanel;
     public List<GameObject> hudElements = new List<GameObject>();
+    private Text unitText;
+    private Text foodText;
+    private Text woodText;
+    private Text ironText;
+    private Text stoneText;
 
     void Awake()
     {
@@ -26,6 +31,14 @@ public class HUDManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+//    private void Start()
+//    {
+//         unitText;
+//     foodText;
+//     woodText;
+//     ironText;
+//     stoneText;
+//}
 
     public void ShowUnitHUD(List<GameObject> selectedUnits)
     {
