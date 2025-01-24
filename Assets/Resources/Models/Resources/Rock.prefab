@@ -96,6 +96,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 7c77c455beaeee649bd54f8df5f3af77, type: 3}
+      propertyPath: m_TagString
+      value: Stone
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 7c77c455beaeee649bd54f8df5f3af77, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -161,7 +165,7 @@ NavMeshObstacle:
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: -0.6, y: 0.26, z: -0.6}
+  m_Center: {x: -0.6, y: 0.26, z: -0.51}
   m_TimeToStationary: 0.5
 --- !u!4 &4412417125401259828 stripped
 Transform:

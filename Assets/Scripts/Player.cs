@@ -6,10 +6,10 @@ public class Player : MonoBehaviour
 {
     public string Name;
     public int unitCount { get; private set;}
-    public int food;
-    public int wood;
-    public int iron;
-    public int stone;
+    public int foodCount;
+    public int woodCount;
+    public int ironCount;
+    public int stoneCount;
     public List<GameObject> buildings = new List<GameObject>();
     public List<GameObject> units = new List<GameObject>();
     void Start()
@@ -21,5 +21,12 @@ public class Player : MonoBehaviour
     void Update()
     {
         unitCount = units.Count;
+    }
+    public void AddResources(int food,int wood,int iron,int stone)
+    {
+        foodCount += food;
+        woodCount += wood;
+        ironCount += iron;
+        stoneCount += stone;
     }
 }

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using System;
 
 public class HUDManager : MonoBehaviour
 {
@@ -14,11 +15,12 @@ public class HUDManager : MonoBehaviour
     public GameObject actionPanelHealer;
     public GameObject resoursesPanel;
     public List<GameObject> hudElements = new List<GameObject>();
-    private Text unitText;
-    private Text foodText;
-    private Text woodText;
-    private Text ironText;
-    private Text stoneText;
+    public Text unitCount;
+    public Text foodCount;
+    public Text woodCount;
+    public Text ironCount;
+    public Text stoneCount;
+    public Player player;
 
     void Awake()
     {
@@ -31,14 +33,19 @@ public class HUDManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-//    private void Start()
-//    {
-//         unitText;
-//     foodText;
-//     woodText;
-//     ironText;
-//     stoneText;
-//}
+    private void Update()
+    {
+        ShowResurses();
+    }
+
+    void ShowResurses()
+    {
+        unitCount.text = Convert.ToString(player.unitCount);
+        foodCount.text = Convert.ToString(player.foodCount);
+        woodCount.text = Convert.ToString(player.woodCount);
+        ironCount.text = Convert.ToString(player.ironCount);
+        stoneCount.text = Convert.ToString(player.stoneCount);
+    }
 
     public void ShowUnitHUD(List<GameObject> selectedUnits)
     {
