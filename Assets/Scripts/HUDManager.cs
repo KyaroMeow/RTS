@@ -20,7 +20,7 @@ public class HUDManager : MonoBehaviour
     public Text woodCount;
     public Text ironCount;
     public Text stoneCount;
-    public Player player;
+    public PlayerResources player;
 
     void Awake()
     {

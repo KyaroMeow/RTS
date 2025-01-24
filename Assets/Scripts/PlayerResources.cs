@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerResources : MonoBehaviour
 {
     public string Name;
     public int unitCount { get; private set;}

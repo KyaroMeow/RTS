@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class Worker : MonoBehaviour
 {
-    public Player player; // Ёкземпл€р класса Player
+    public PlayerResources player; // Ёкземпл€р класса Player
     public float collectionRange = 2f; // –адиус сбора ресурсов
     public float collectionTime = 3f; // ¬рем€ сбора ресурсов
     public AudioClip collectionSound; // «вук сбора ресурсов
@@ -16,6 +16,11 @@ public class Worker : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+    }
+
+    private void OnEnable()
+    {
+        player = GameObject.FindObjectOfType<PlayerResources>();
     }
 
     void Update()
@@ -48,14 +53,14 @@ public class Worker : MonoBehaviour
 
     void CollectResource(GameObject resourceObject)
     {
-        if (resourceObject.CompareTag("Wood"))
-        {
-            player.AddResources(0, 1, 0, 0);
-        }
-        else if (resourceObject.CompareTag("Stone"))
-        {
-            player.AddResources(0, 0, 0, 1);
-        }
+        //if (resourceObject.CompareTag("Wood"))
+        //{
+        //    player.AddResources(0, 1, 0, 0);
+        //}
+        //else if (resourceObject.CompareTag("Stone"))
+        //{
+        //    player.AddResources(0, 0, 0, 1);
+        //}
         
 
         Destroy(resourceObject);
