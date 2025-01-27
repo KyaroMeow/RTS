@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class Worker : MonoBehaviour
 {
+
     public PlayerResources player; // Экземпляр класса Player
     public float collectionRange = 2f; // Радиус сбора ресурсов
     public float collectionTime = 3f; // Время сбора ресурсов

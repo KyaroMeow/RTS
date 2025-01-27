@@ -18,6 +18,12 @@ public class UnitSelector : MonoBehaviour
     void Update()
     {
         HandleSelection();
+
+        if (isSelecting && IsPointerOverNoSelectionArea())
+        {
+            isSelecting = false;
+            selectionBoxUI.gameObject.SetActive(false);
+        }
     }
 
     void HandleSelection()
