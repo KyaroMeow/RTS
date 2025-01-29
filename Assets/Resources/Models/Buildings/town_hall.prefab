@@ -1274,7 +1274,7 @@ GameObject:
   - component: {fileID: 1762677488464157903}
   m_Layer: 10
   m_Name: town_center_model
-  m_TagString: Buildings
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1711,7 +1711,7 @@ GameObject:
   - component: {fileID: 7923825931760036456}
   m_Layer: 0
   m_Name: town_hall
-  m_TagString: Untagged
+  m_TagString: Buildings
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
