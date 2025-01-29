@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446410943666928626}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.003995896, y: 0.97799975, z: -0.025000572}
+  m_LocalPosition: {x: 0.003995896, y: 1.000004, z: -0.025000572}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -250,8 +250,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 445ec1842be008a429a482a25c52efcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  MaxHP: 0
+  Name: House
+  MaxHP: 10
+  woodCost: 1
+  stoneCost: 1
+  buildTime: 10
   BuildingsIcon: {fileID: 0}
 --- !u!1 &6558366000321314412
 GameObject:

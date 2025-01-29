@@ -1329,6 +1329,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Farm
   MaxHP: 30
+  woodCost: 3
+  stoneCost: 0
+  buildTime: 5
   BuildingsIcon: {fileID: 21300000, guid: 3bdab9633cf502044bfe0f31278f5105, type: 3}
 --- !u!65 &3648065759644030901
 BoxCollider:

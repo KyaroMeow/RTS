@@ -690,8 +690,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 445ec1842be008a429a482a25c52efcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  MaxHP: 0
+  Name: university
+  MaxHP: 150
+  woodCost: 35
+  stoneCost: 50
+  buildTime: 40
   BuildingsIcon: {fileID: 0}
 --- !u!1 &2221652293885669729
 GameObject:

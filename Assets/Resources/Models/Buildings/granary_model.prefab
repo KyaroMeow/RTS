@@ -1900,7 +1900,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Granary
-  MaxHP: 0
+  MaxHP: 70
+  woodCost: 15
+  stoneCost: 15
+  buildTime: 10
   BuildingsIcon: {fileID: 0}
 --- !u!1 &4315044987307610154
 GameObject:
