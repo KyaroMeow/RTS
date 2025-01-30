@@ -15,14 +15,7 @@ public class CameraMovement : MonoBehaviour
     void Start()
     {
         mainCamera = GetComponent<Camera>();
-        if (mainCamera == null)
-        {
-            Debug.LogError("Camera component is not attached to the GameObject.");
-        }
-        else if (!mainCamera.orthographic)
-        {
-            Debug.Log("Camera is set to perspective projection.");
-        }
+       
     }
 
     void Update()
