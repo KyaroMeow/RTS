@@ -169,7 +169,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   MaxHP: 0
-  BuildingsIcon: {fileID: 0}
+  woodCost: 0
+  stoneCost: 0
+  buildTime: 0
+  BuildingsIcon: {fileID: 21300000, guid: fd395689196893e4f9f6c66205a4ac7b, type: 3}
 --- !u!1 &5313074711291029671
 GameObject:
   m_ObjectHideFlags: 0
