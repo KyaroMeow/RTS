@@ -21,7 +21,7 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         HandleZoom();
-        HandlePan();
+       
         HandleArrowKeys();
     }
 
@@ -36,27 +36,7 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
-    void HandlePan()
-    {
-        if (Input.GetMouseButtonDown(2)) // Средняя кнопка мыши
-        {
-            isPanning = true;
-            lastMousePosition = Input.mousePosition;
-        }
-        else if (Input.GetMouseButtonUp(2))
-        {
-            isPanning = false;
-        }
-
-        if (isPanning)
-        {
-            Vector3 mouseDelta = Input.mousePosition - lastMousePosition;
-            // Инверсия перемещения камеры
-            Vector3 move = new Vector3(mouseDelta.x, 0, mouseDelta.y) * panSpeed * Time.deltaTime;
-            transform.Translate(-move, Space.World); // Инверсия перемещения
-            lastMousePosition = Input.mousePosition;
-        }
-    }
+    
 
     void HandleArrowKeys()
     {

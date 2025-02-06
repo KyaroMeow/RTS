@@ -7,9 +7,10 @@ using UnityEngine;
 public class BakeNavMesh : MonoBehaviour
 {
     public GameObject plane;
-
+     
     void Start()
     {
+        
         BakeNavMeshSurface();
     }
         void BakeNavMeshSurface()
